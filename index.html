@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лабораторная работа №1</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Лабораторная работа №1</h1>
+        <!-- Пункт 1 -->
+        <h2>1. Подключение к серверу по SSH</h2>
+        <div class="white-block">
+            <p>Подключение к серверу kubsu-dev.ru на порт 58528. Терминал Fly, ОС Linux.</p>
+            <p><strong>Команда:</strong> <code>ssh u82465@kubsu-dev.ru -p 58528</code></p>
+            <img src="images/image1.jpg" alt="Подключение по SSH">
+        </div>
+
+        <!-- Пункт 2 -->
+        <h2>2. Ping (определение IP-адреса)</h2>
+        <div class="white-block">
+            <p>Ping — это команда для проверки связи с сервером, -c (количество) и 4 (4 пакета), сделала для того, чтобы не выводило бесконечное число пакетов, пока не нажмешь Ctrl+C.</p>
+            <p><strong>Команда:</strong> <code>ping -c 4 kubsu.ru</code></p>
+            <img src="images/image2.jpg" alt="Результат ping">
+            <p><strong>IP-адрес kubsu.ru:</strong> 185.13.84.92</p>
+        </div>
+
+        <!-- Пункт 3 -->
+        <h2>3. nslookup (A и MX записи)</h2>
+        <div class="white-block">
+            <p>A-запись и MX-запись. Nslookup — это команда, которая запрашивает IP адрес по имени домена. A-запись связывает имя домена с IP-адресом, MX-запись указывает, какой почтовый сервер обрабатывает почту для домена. Домен — это адрес сайта в интернете, который понятен человеку.</p>
+        </div>
+        
+        <h3>kubsu.ru</h3>
+        <div class="white-block">
+            <p><strong>A-запись:</strong> <code>nslookup kubsu.ru</code></p>
+            <img src="images/image3.jpg" alt="A-запись kubsu.ru">
+        </div>
+        
+        <div class="white-block">
+            <p><strong>MX-запись:</strong> <code>nslookup -type=mx kubsu.ru</code></p>
+            <img src="images/image4.jpg" alt="MX-запись kubsu.ru">
+        </div>
+
+        <h3>kubsu-dev.ru</h3>
+        <div class="white-block">
+            <p><strong>A-запись:</strong> <code>nslookup kubsu-dev.ru</code></p>
+            <img src="images/image5.jpg" alt="A-запись kubsu-dev.ru">
+        </div>
+        
+        <div class="white-block">
+            <p><strong>MX-запись:</strong> <code>nslookup -type=mx kubsu-dev.ru</code></p>
+            <img src="images/image6.jpg" alt="MX-запись kubsu-dev.ru">
+        </div>
+
+        <!-- Пункт 4 -->
+        <h2>4. whois (дата регистрации доменов)</h2>
+        <div class="white-block">
+            <p>С помощью команды whois узнала дату регистрации домена kubsu.ru и kubsu-dev.ru.</p>
+        </div>
+        
+        <div class="white-block">
+            <p><strong>kubsu.ru:</strong> <code>whois kubsu.ru | grep -i "created"</code></p>
+            <img src="images/image7.jpg" alt="whois kubsu.ru">
+            <p><strong>Дата регистрации:</strong> 28 марта 1998 г.</p>
+        </div>
+        
+        <div class="white-block">
+            <p><strong>kubsu-dev.ru:</strong> <code>whois kubsu-dev.ru | grep -i "created"</code></p>
+            <img src="images/image8.jpg" alt="whois kubsu-dev.ru">
+            <p><strong>Дата регистрации:</strong> 12 февраля 2020 г.</p>
+        </div>
+
+        <!-- Пункт 5 - Создание папки -->
+        <h2>5. Создание папки на сервере</h2>
+        <div class="white-block">
+            <p>Создание папки web_lab1 в каталоге www на сервере.</p>
+            <p><strong>Команда:</strong> <code>mkdir www/web_lab1</code></p>
+            <img src="images/image9.jpg" alt="Создание папки">
+        </div>
+
+        <!-- Пункт 5 - Переход в папку -->
+        <div class="white-block">
+            <p>Переход в папку с проектом на локальном компьютере.</p>
+            <p><strong>Команда:</strong> <code>cd C:\Users\PC\OneDrive\Desktop\webkom\web_lab1</code></p>
+            <img src="images/image10.jpg" alt="Переход в папку">
+        </div>
+
+        <!-- Пункт 5 - Копирование на сервер -->
+        <div class="white-block">
+            <p>Копирование всех файлов на сервер с помощью SCP.</p>
+            <p><strong>Команда:</strong> <code>scp -P 58528 -r * u82465@kubsu-dev.ru:~/www/web_lab1/</code></p>
+            <p>SCP — команда для копирования по SSH, -r — копирование папок, * — все файлы в текущей папке.</p>
+            <img src="images/image11.jpg" alt="Копирование на сервер">
+        </div>
+
+        <!-- Пункт 6 - FileZilla подключение -->
+        <h2>6. Копирование через SFTP (FileZilla)</h2>
+        <div class="white-block">
+            <p>Когда было скачано приложение, мы заполнили строки: Хост, имя пользователя, пароль и порт.</p>
+            <img src="images/image12.jpg" alt="FileZilla подключение">
+        </div>
+
+        <div class="white-block">
+            <p>После появилась панель слева, также было нажато на папку www → web_lab1.</p>
+            <img src="images/image13.jpg" alt="FileZilla папки">
+        </div>
+
+        <div class="white-block">
+            <p>Был создан каталог backup, куда после были скачаны наши файлы.</p>
+            <img src="images/image14.jpg" alt="FileZilla скачивание">
+        </div>
+
+        <!-- Пункт 5 - Результат -->
+        <h2>Результат</h2>
+        <div class="white-block">
+            <p>Страница доступна по адресу:</p>
+            <div class="url">
+                http://u82465.kubsu-dev.ru/web_lab1/
+            </div>
+        </div>
+    </div>
+</body>
+</html>
